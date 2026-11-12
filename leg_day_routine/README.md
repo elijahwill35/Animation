@@ -16,8 +16,8 @@ voice and music as [`arm_day_routine`](../arm_day_routine).
 | 4 | Lying leg curls | 3 × 10–12 | 60 s | Hamstrings | Hips down |
 | 5 | Standing calf raises | 4 × 12–15 | 45 s | Calves | Full stretch |
 
-17 working sets in total. Timeline: intro 0:00 · squats 0:09 · split squats 0:20 · leg extensions 0:34 ·
-leg curls 0:46 · calf raises 0:58 · recap + save/follow 1:10 – 1:21
+17 working sets in total. Timeline: intro 0:00 · squats 0:09 · split squats 0:21 · leg extensions 0:34 ·
+leg curls 0:46 · calf raises 0:58 · recap + save/follow 1:11 – 1:21
 
 ## How it's made
 
