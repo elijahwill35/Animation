@@ -21,18 +21,16 @@ leg curls 0:46 · calf raises 0:58 · recap + save/follow 1:11 – 1:21
 
 ## How it's made
 
-This works the same way as `arm_day_routine`, and `render.py` and `audio.py` are copies of it. The
+This uses the shared `vidkit` routine renderer, like `arm_day_routine`. The
 recap is extended to five exercises, and each shot can set its own card height (the optional 6th field
 of a shot in `script.py`), so the sets/reps card stays clear of the lifter on every machine. Each
 2-second shot is slowed down and looped back and forth with frame blending, re-framed with
 punch-ins, and overlaid with the header, the sets/reps/rest card and synced captions.
 
 ```bash
-pip install opencv-python-headless piper-tts pillow numpy
-python3 voice.py && python3 render.py && python3 audio.py
-ffmpeg -i build/video_silent.mp4 -i build/mix.wav -c:v copy -c:a aac -b:a 192k -shortest \
-  -movflags +faststart ../output/leg_day_routine.mp4
+python3 -m vidkit.build leg_day_routine              # from the repo root: voice -> render -> audio -> mux -> QA
+python3 -m vidkit.build leg_day_routine --preview    # voice + still frames only, for checking layout
 ```
 
 `python3 render.py --preview [--t=12.5 ...]` writes still frames to `build/preview/`. To change sets,
-reps or wording, edit `script.py` and re-run all three scripts.
+reps or wording, edit `script.py` and re-run the build.

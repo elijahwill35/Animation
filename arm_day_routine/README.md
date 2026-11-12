@@ -34,20 +34,18 @@ as the narration runs. Shots also change framing (wide, then punch-in) every few
 
 * `script.py`: narration lines, highlighted words, sets/reps/rest and the shot list per exercise.
 * `voice.py`: makes the voiceover one sentence at a time with Piper TTS (`en-us-ryan-high`), the
-  same voice and processing as `arm_day_short`.
-* `render.py`: builds the timeline from the voice lengths and renders every frame (re-framing,
+  same voice and processing as `arm_day_short` (via `vidkit/voice.py`, which caches each sentence).
+* `render.py`: a small subclass of the shared `vidkit/routine.py` renderer. It builds the timeline from the voice lengths and renders every frame (re-framing,
   cards, captions, flashes on cuts), using all CPU cores.
-* `audio.py`: adapted from `arm_day_short`. It makes an original synthesized beat with whooshes and
+* `audio.py`: calls `vidkit/audio.py`, which makes an original synthesized beat with whooshes and
   impacts, then mixes it under the voice with ducking.
 
 ```bash
-pip install opencv-python-headless piper-tts pillow numpy
-python3 voice.py && python3 render.py && python3 audio.py
-ffmpeg -i build/video_silent.mp4 -i build/mix.wav -c:v copy -c:a aac -b:a 192k -shortest \
-  -movflags +faststart ../output/arm_day_routine.mp4
+python3 -m vidkit.build arm_day_routine              # from the repo root: voice -> render -> audio -> mux -> QA
+python3 -m vidkit.build arm_day_routine --preview    # voice + still frames only, for checking layout
 ```
 
 `python3 render.py --preview [--t=12.5 ...]` writes still frames to `build/preview/`.
 
-To change sets, reps or wording, edit `script.py` and re-run all three scripts. Scene lengths follow
+To change sets, reps or wording, edit `script.py` and re-run the build. Scene lengths follow
 the voiceover automatically.

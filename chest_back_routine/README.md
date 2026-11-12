@@ -24,21 +24,19 @@ lat pulldowns 0:41 · bench press 0:53 · recap + save/follow 1:04 – 1:15
 
 ## How it's made
 
-This works the same way as `arm_day_routine`, and `render.py` and `audio.py` are copies of it with a
-landscape layout. Each 2-second shot is slowed down and looped back and forth with frame blending.
+This uses the shared `vidkit` routine renderer with a landscape layout (`render.py` overrides the
+intro and recap). Each 2-second shot is slowed down and looped back and forth with frame blending.
 On top of it go the "EXERCISE n OF 5" header and progress bar, a sets/reps/rest card beside the
 lifter (the row being read lights up red), and synced captions. The intro lists the five exercises.
 The outro shows a recap card and a "SAVE + FOLLOW" button.
 
 ```bash
-pip install opencv-python-headless piper-tts pillow numpy
-python3 voice.py && python3 render.py && python3 audio.py
-ffmpeg -i build/video_silent.mp4 -i build/mix.wav -c:v copy -c:a aac -b:a 192k -shortest \
-  -movflags +faststart ../output/chest_back_routine.mp4
+python3 -m vidkit.build chest_back_routine              # from the repo root: voice -> render -> audio -> mux -> QA, both cuts (project.json)
+python3 -m vidkit.build chest_back_routine --preview    # voice + still frames only, for checking layout
 ```
 
 `python3 render.py --preview [--t=12.5 ...]` writes still frames to `build/preview/`. To change sets,
-reps or wording, edit `script.py` and re-run all three scripts.
+reps or wording, edit `script.py` and re-run the build.
 
 ## Vertical (Shorts) version
 
@@ -48,9 +46,5 @@ reps or wording, edit `script.py` and re-run all three scripts.
 darkened copy of the same footage, so nothing is cropped off. The sets/reps/rest card becomes a strip
 directly under the lifter.
 
-```bash
-python3 render_short.py
-ffmpeg -i build/short_silent.mp4 -i build/mix.wav -c:v copy -c:a aac -b:a 192k -shortest \
-  -movflags +faststart ../output/chest_back_short.mp4
-```
+The build command above renders this cut too (it's listed in `project.json`).
 

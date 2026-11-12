@@ -50,9 +50,9 @@ The avatar (`assets/avatar.png`) is cut out and rigged as a 2D puppet:
   music under it.
 
 ```bash
-pip install opencv-python-headless rembg piper-tts pillow numpy
-python3 rig.py && python3 voice.py && python3 render.py && python3 audio.py
-ffmpeg -i build/video_silent.mp4 -i build/mix.wav -c:v copy -c:a aac -b:a 192k -shortest output/arm_day_short.mp4
+python3 arm_day_short/rig.py                # only if the avatar changes
+python3 -m vidkit.build arm_day_short              # from the repo root: voice -> render -> audio -> mux -> QA
+python3 -m vidkit.build arm_day_short --preview    # voice + still frames only, for checking layout
 ```
 
 `python3 render.py --preview [--only=ex1]` writes still frames to `build/preview/` for quick checks.

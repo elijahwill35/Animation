@@ -1,0 +1,4 @@
+{
+  "output": "chest_back_routine.mp4",
+  "cuts": [{"render": "render_short.py", "silent": "short_silent.mp4", "output": "chest_back_short.mp4"}]
+}

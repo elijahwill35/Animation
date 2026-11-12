@@ -32,8 +32,6 @@ the held frame moving. Names the TTS voice would mispronounce get a phonetic spo
 Shen-goon".
 
 ```bash
-pip install opencv-python-headless piper-tts pillow numpy
-python3 voice.py && python3 render.py && python3 audio.py
-ffmpeg -i build/video_silent.mp4 -i build/mix.wav -c:v copy -c:a aac -b:a 192k -shortest \
-  -movflags +faststart ../output/nba_props_short.mp4
+python3 -m vidkit.build nba_props_short              # from the repo root: voice -> render -> audio -> mux -> QA
+python3 -m vidkit.build nba_props_short --preview    # voice + still frames only, for checking layout
 ```

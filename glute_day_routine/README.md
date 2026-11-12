@@ -39,8 +39,6 @@ exercise scene cuts between both. The hook replaces the title intro (`draw_intro
 The rest row on the card only lights up when a line actually talks about rest.
 
 ```bash
-pip install opencv-python-headless piper-tts pillow numpy
-python3 voice.py && python3 render.py && python3 audio.py
-ffmpeg -i build/video_silent.mp4 -i build/mix.wav -c:v copy -c:a aac -b:a 192k -shortest \
-  -movflags +faststart ../output/glute_day_routine.mp4
+python3 -m vidkit.build glute_day_routine              # from the repo root: voice -> render -> audio -> mux -> QA
+python3 -m vidkit.build glute_day_routine --preview    # voice + still frames only, for checking layout
 ```
