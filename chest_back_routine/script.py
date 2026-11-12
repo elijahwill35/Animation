@@ -2,7 +2,7 @@
 
 Source clip (assets/source.mp4, 1280x720 landscape, 24 fps, 10 s) has five 2-second shots:
   pushup     0.00-1.96  push-ups, front view
-  row        1.96-3.96  dumbbell bent-over rows, side view
+  row        1.96-3.96  barbell bent-over rows, side view
   incline    3.96-5.96  dumbbell incline press
   pulldown   5.96-8.00  lat pulldown, rear three-quarter view
   bench      8.00-10.0  flat barbell bench press, overhead front view
@@ -122,3 +122,16 @@ SCENES = [
 ]
 
 EXERCISES = [s for s in SCENES if "num" in s]
+
+# Vertical (YouTube Shorts, 1080x1920) framing, used by render_short.py.
+# shot = (segment, scale, cx, cy): scale is output px per source px (2.67 fills the
+# full 9:16 height; smaller values show more of the frame over a blurred backdrop).
+SHORT_SHOTS = {
+    "intro": [("bench", 2.0, 0.5, 0.45), ("row", 2.67, 0.63, 0.5), ("pulldown", 2.67, 0.6, 0.45)],
+    "ex1": [("pushup", 1.5, 0.5, 0.55), ("pushup", 2.1, 0.5, 0.5)],
+    "ex2": [("row", 2.3, 0.64, 0.62), ("row", 2.67, 0.68, 0.5)],
+    "ex3": [("incline", 1.6, 0.6, 0.5), ("incline", 2.5, 0.62, 0.42)],
+    "ex4": [("pulldown", 1.7, 0.55, 0.45), ("pulldown", 2.6, 0.63, 0.4)],
+    "ex5": [("bench", 1.6, 0.5, 0.45), ("bench", 2.4, 0.5, 0.4)],
+    "outro": [("bench", 1.6, 0.5, 0.45), ("row", 2.3, 0.64, 0.62)],
+}

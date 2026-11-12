@@ -5,7 +5,9 @@ from the 10-second workout clip in `assets/source.mp4`, with the same style, voi
 [`arm_day_routine`](../arm_day_routine). The source clip is landscape, so the video is too. A
 vertical crop would cut off the push-ups and bench press.
 
-**Final video:** [`output/chest_back_routine.mp4`](../output/chest_back_routine.mp4)
+**Final videos:**
+* [`output/chest_back_routine.mp4`](../output/chest_back_routine.mp4): landscape, 1920×1080
+* [`output/chest_back_short.mp4`](../output/chest_back_short.mp4): vertical for YouTube Shorts, 1080×1920
 
 ## The routine
 
@@ -37,3 +39,18 @@ ffmpeg -i build/video_silent.mp4 -i build/mix.wav -c:v copy -c:a aac -b:a 192k -
 
 `python3 render.py --preview [--t=12.5 ...]` writes still frames to `build/preview/`. To change sets,
 reps or wording, edit `script.py` and re-run all three scripts.
+
+## Vertical (Shorts) version
+
+`render_short.py` renders the same timeline at 1080×1920 and reuses `build/mix.wav`, so run
+`render.py` first. Each shot gets its own framing from `SHORT_SHOTS` in `script.py`. Tight shots
+(rows, pulldowns) fill the screen. Wide shots (push-ups, bench press) sit full-width over a blurred,
+darkened copy of the same footage, so nothing is cropped off. The sets/reps/rest card becomes a strip
+directly under the lifter.
+
+```bash
+python3 render_short.py
+ffmpeg -i build/short_silent.mp4 -i build/mix.wav -c:v copy -c:a aac -b:a 192k -shortest \
+  -movflags +faststart ../output/chest_back_short.mp4
+```
+
