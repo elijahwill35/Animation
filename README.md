@@ -11,6 +11,7 @@ original synthesized soundtrack and an offline TTS voice. Finished videos are in
 | [`glute_day_routine`](glute_day_routine) | [63 s](output/glute_day_routine.mp4) | with a hook intro |
 | [`nba_props_short`](nba_props_short) | [68 s](output/nba_props_short.mp4) | NBA player props from motion graphics |
 | [`nba_props_nov12`](nba_props_nov12) | [64 s](output/nba_props_nov12.mp4) | NBA props, Nov 12 slate, hook intro |
+| [`nfl_props_nov12`](nfl_props_nov12) | [64 s](output/nfl_props_nov12.mp4) | NFL props, Nov 12, hook intro |
 | [`arm_day_short`](arm_day_short) | [47 s](output/arm_day_short.mp4) | 2D-animated avatar Short |
 
 ## Making a video
