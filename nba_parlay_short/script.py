@@ -55,14 +55,17 @@ SCENES = [
              "BEST", "HIT", "RATE"},
     ),
     dict(
-        id="top3", play=(166, 239), promo_from=1,   # promo panel appears with this line
+        id="top3", play=(166, 239), promo_from=2,   # promo panel appears with this line
         lines=[
+            "That's the card. Mitchell over fourteen and a half points, Mitchell over one and a half "
+            "threes, and Coward over six and a half rebounds.",
             "Now the bonus.",
             "My referral code is in the description.",
             "New users who bet twenty dollars with my code get three hundred fifty in bonus bets.",
             "Twenty one plus, terms apply. Bet responsibly.",
         ],
-        hot={"BONUS.", "REFERRAL", "CODE", "DESCRIPTION.", "NEW", "USERS", "TWENTY", "DOLLARS",
+        hot={"CARD.", "MITCHELL", "FOURTEEN", "POINTS,", "THREES,", "COWARD", "SIX", "REBOUNDS.",
+             "BONUS.", "REFERRAL", "CODE", "DESCRIPTION.", "NEW", "USERS", "TWENTY", "DOLLARS",
              "HUNDRED", "FIFTY", "BONUS", "BETS.", "TERMS", "RESPONSIBLY."},
     ),
 ]
