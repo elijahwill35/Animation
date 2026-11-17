@@ -20,7 +20,8 @@ on-screen text, plus the same synthesized beat and whooshes as the other videos.
 | 0:44 | 6/6 Mountain climbers, 30 s | "Mountain climbers, thirty seconds. Hips level with your shoulders. Fast knees, and keep breathing." |
 | 0:51 | Do 3 rounds / Save this… | "Do three rounds. Save this for your next workout, and tag the friend who needs it." |
 
-The narration matches the on-screen text word for word where it can. Each exercise starts at
+"Ozempic" is fed to the voice as phonetic spelling (`SPOKEN` in `script.py`) so it says
+"oh-ZEM-pik". The narration matches the on-screen text word for word where it can. Each exercise starts at
 8.67 s + 7 s × n. Its two form tips appear 1.4 s and 4.2 s into the scene, and each spoken tip is
 anchored to those moments.
 

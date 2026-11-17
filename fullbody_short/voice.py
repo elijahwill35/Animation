@@ -8,7 +8,7 @@ import os
 import subprocess
 import wave
 
-from script import LINES
+from script import LINES, SPOKEN
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "build", "vo")
@@ -21,7 +21,7 @@ for key, text, _ in LINES:
     out = os.path.join(OUT, key + ".wav")
     subprocess.run(["python3", "-m", "piper", "-m", VOICE, "-c", VOICE + ".json",
                     "--length-scale", "0.88", "--sentence-silence", "0.1", "-f", raw],
-                   input=text.encode(), check=True, capture_output=True)
+                   input=SPOKEN.get(key, text).encode(), check=True, capture_output=True)
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", raw, "-af",
                     "silenceremove=start_periods=1:start_threshold=-45dB,areverse,"
                     "silenceremove=start_periods=1:start_threshold=-45dB,areverse,"

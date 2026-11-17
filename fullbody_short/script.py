@@ -42,6 +42,12 @@ LINES += [
     ("outro_1", "Save this for your next workout, and tag the friend who needs it.", SEG[6] + 1.6),
 ]
 
+# Spoken overrides for words the TTS voice gets wrong. "[[ ... ]]" is raw IPA for Piper:
+# Ozempic = oh-ZEM-pik, stress on the second syllable (the default reading is "OHZ-mpik").
+SPOKEN = {
+    "hook_0": "[[ oʊzˈɛmpɪk ]] who?",
+}
+
 # whooshes on every scene change, impacts on the hook's big word and each exercise title
 CUTS = [3.67] + SEG
 SLAMS = [1.8] + [s + 0.3 for s in SEG[:6]]
